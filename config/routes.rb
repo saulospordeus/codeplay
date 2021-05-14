@@ -1,3 +1,4 @@
 Rails.application.routes.draw do
-  get '/', to: 'home#index', as: 'root'
+  root 'home#index'
+  resources :courses, only: [:index, :show]
 end
