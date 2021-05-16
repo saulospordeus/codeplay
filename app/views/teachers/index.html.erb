@@ -1,0 +1,12 @@
+<% if @teachers.empty? %>
+<p>Nenhum professor disponível</p>
+<% end %>
+
+
+<% @teachers.each do |teacher| %>
+  <h1><%= teacher.name %></h1>]
+  <p><%= teacher.bio %></p>
+   <p><%= teacher.email %></p>
+<% end %>
+
+  <h2><%= link_to "Voltar", root_path %></h2>]
