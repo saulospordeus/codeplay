@@ -3,8 +3,13 @@ class TeachersController < ApplicationController
     @teachers = Teacher.all
     end
 
-    #def show
-    #@course = Course.find(params[:id])
-    #end
+    def new
+        @teacher = Teacher.new
+    end
+
+    def create
+        @teacher = Teacher.create!(params.require(:teacher).permit(:name, :email, :bio, :avatar))
+        redirect_to teachers_path
+    end
 
 end
