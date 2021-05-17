@@ -1,3 +1,9 @@
+  <% flash.each do |type, msg| %>
+  <div>
+    <%= msg %>
+  </div>
+  <% end %>
+
 <%= form_for @teacher do |f| %>
   <%= f.label :name, 'Nome' %>
   <%= f.text_field :name %>

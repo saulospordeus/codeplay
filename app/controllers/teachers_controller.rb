@@ -12,11 +12,16 @@ class TeachersController < ApplicationController
     end
 
     def create
-      @teacher = Teacher.create!(params.require(:teacher).permit(:name, :email, :bio, :avatar))
-      session[:teacher] = teacher.id
-      redirect_to teachers_path
+      @teacher = Teacher.new(params.require(:teacher).permit(:name, :email, :bio, :avatar))
+      #session[:teacher] = @teacher.id #DEPOIS VERIFICAR ESSA LINHA AQUI PQ NÃO TAVA FUNCIONANDO SEM ELA MAS NÃO ERA PRA PRECISAR DELA
+      if @teacher.save
+        redirect_to @teacher
+      else
+        flash[:alert] = 'Você deve informar todos os dados'
+        render :new
+      end
     end
-
+    
     def edit
       @teacher = Teacher.find(params[:id])
     end
