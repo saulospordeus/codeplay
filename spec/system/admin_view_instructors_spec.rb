@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-describe 'Admin view teachers' do
+describe 'Admin view instructors' do
   it 'successfully' do
-    Teacher.create!(name: 'Albert Einstein', email: 'albie_einstein@bol.com.br',
+    Instructor.create!(name: 'Albert Einstein', email: 'albie_einstein@bol.com.br',
                    bio: 'Especialista em Relatividade')
 
     visit root_path

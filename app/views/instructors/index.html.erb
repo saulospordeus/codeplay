@@ -1,0 +1,15 @@
+<% if @instructors.empty? %>
+<p>Nenhum professor disponível</p>
+<% end %>
+
+
+<% @instructors.each do |instructor| %>
+  <h1><%= link_to instructor.name, instructor %></h1>
+  <h1><%= instructor.name %></h1>
+  <p><%= instructor.bio %></p>
+   <p><%= instructor.email %></p>
+   <p><%= link_to 'Apagar', instructor_path(instructor), method: :delete %></p>
+<% end %>
+
+  <h2><%= link_to "Voltar", root_path %></h2>
+  

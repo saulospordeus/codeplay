@@ -1,0 +1,6 @@
+  <h1><%= @instructor.name %></h1>
+  <h3>Detalhes</h3>
+  <p><%= @instructor.bio %></p>
+  <p><%= @instructor.email %></p>
+  <p><%= image_tag @instructor.avatar %></p>
+  <h2><%= link_to "Editar", edit_instructor_path(@instructor) %></h2>

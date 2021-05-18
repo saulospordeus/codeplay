@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'user regist teachers' do
+describe 'user regist instructors' do
   it 'successfully' do
 
       # simula a ação do usuário

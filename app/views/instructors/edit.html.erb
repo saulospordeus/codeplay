@@ -1,10 +1,4 @@
-  <% flash.each do |type, msg| %>
-  <div>
-    <%= msg %>
-  </div>
-  <% end %>
-
-<%= form_for @teacher do |f| %>
+<%= form_for @instructor do |f| %>
   <%= f.label :name, 'Nome' %>
   <%= f.text_field :name %>
   <%= f.label :email, 'Email' %>
@@ -13,6 +7,6 @@
   <%= f.text_field :bio %>
   <%= f.label :avatar, 'Foto' %>
   <%= f.file_field :avatar %>
-  <%= f.submit 'Enviar'%>
+  <%= f.submit 'Editar'%>
 <% end %>
 
