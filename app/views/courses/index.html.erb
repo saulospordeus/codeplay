@@ -4,9 +4,10 @@
 
 
 <% @courses.each do |course| %>
-  <h1><%= link_to course.name, course %></h1>]
+  <h1><%= link_to course.name, course %></h1>
   <p><%= course.description %></p>
   <p><%= number_to_currency course.price, unit: 'R$', separator: ',', delimiter: '.', format: '%u %n' %></p>
+  <p><%= link_to 'Apagar', course_path(course), method: :delete %></p>
 <% end %>
 
 <%= link_to 'Registrar um Curso', new_course_path %>

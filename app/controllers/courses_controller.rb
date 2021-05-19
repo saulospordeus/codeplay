@@ -1,5 +1,5 @@
 class CoursesController < ApplicationController
-  before_action :set_course, only: %i[update edit show]
+  before_action :set_course, only: %i[update edit show destroy]
 
 
     def index
@@ -27,6 +27,10 @@ class CoursesController < ApplicationController
     redirect_to @course
     end
 
+    def destroy
+    @course.destroy
+    redirect_to courses_path, notice: 'Curso apagado com sucesso'
+    end
 
     private 
 
@@ -37,7 +41,7 @@ class CoursesController < ApplicationController
     def course_params
         params
         .require(:course)
-        .permit(:name, :description, :code, :price, :enrollment_deadline)
+        .permit(:name, :description, :code, :price, :enrollment_deadline, :banner)
     end
 
 
