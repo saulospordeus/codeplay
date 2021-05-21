@@ -14,9 +14,12 @@ class CoursesController < ApplicationController
     end
 
     def create
-    @course = Course.new(course_params)
-    @course.save
-    redirect_to @course
+      @course = Course.new(course_params)
+      if @course.save
+      redirect_to @course
+      else 
+        render :new
+      end
     end
 
     def edit
@@ -24,7 +27,7 @@ class CoursesController < ApplicationController
 
     def update
     @course.update(course_params)
-    redirect_to @course
+    redirect_to @course, notice: t('.success')
     end
 
     def destroy

@@ -21,6 +21,7 @@ describe Course do
       course.valid?
 
       expect(course.errors[:code]).to include('já está em uso')
+      
     end
   end
 end

@@ -1,10 +1,11 @@
 class InstructorsController < ApplicationController
+  before_action :set_instructor, only: %i[update edit show destroy]
+    
     def index
       @instructors = Instructor.all
     end
 
     def show
-      @instructor = Instructor.find(params[:id])
     end
 
     def new
@@ -12,8 +13,7 @@ class InstructorsController < ApplicationController
     end
 
     def create
-      @instructor = Instructor.new(params.require(:instructor).permit(:name, :email, :bio, :avatar))
-      #session[:instructor] = @instructor.id #DEPOIS VERIFICAR ESSA LINHA AQUI PQ NÃO TAVA FUNCIONANDO SEM ELA MAS NÃO ERA PRA PRECISAR DELA
+      @instructor = Instructor.new(instructor_params)
       if @instructor.save
         redirect_to @instructor
       else
@@ -23,20 +23,26 @@ class InstructorsController < ApplicationController
     end
     
     def edit
-      @instructor = Instructor.find(params[:id])
     end
     
     def update
-      @instructor = Instructor.find(params[:id])
-      @instructor.update(params.require(:instructor).permit(:name, :email, :bio, :avatar))
+      @instructor.update(instructor_params)
       redirect_to @instructor
     end
 
     def destroy
-      instructor = Instructor.find(params[:id])
       instructor.destroy
       redirect_to instructors_path
     end
+    
+    private 
 
+    def set_instructor
+      @instructor = Instructor.find(params[:id])
+    end
+    
+    def instructor_params
+      params.require(:instructor).permit(:name, :email, :bio, :avatar)
+    end
 
 end
