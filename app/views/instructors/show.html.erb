@@ -4,3 +4,4 @@
   <p><%= @instructor.email %></p>
   <p><%= image_tag @instructor.avatar %></p>
   <h2><%= link_to "Editar", edit_instructor_path(@instructor) %></h2>
+  <h2><%= link_to 'Apagar', instructor_path(@instructor), method: :delete %></h2>

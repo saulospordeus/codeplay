@@ -31,7 +31,7 @@ class InstructorsController < ApplicationController
     end
 
     def destroy
-      instructor.destroy
+      @instructor.destroy
       redirect_to instructors_path
     end
     
