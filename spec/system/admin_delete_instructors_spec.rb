@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Admin deletes courses' do
+describe 'Admin deletes instructors' do
     it 'sucessfully' do
         instructor = Instructor.create!(name: 'Aloprado', email: 'aloprado@gmail.com',
             bio: 'Geneticista e comediante')

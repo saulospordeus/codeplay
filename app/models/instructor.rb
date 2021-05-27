@@ -1,6 +1,11 @@
 class Instructor < ApplicationRecord
-    validates :email, uniqueness: { message: 'Já está em uso'}
-    validates :name, :email, presence: { message: 'não pode ficar em branco'}
-
+    has_many :courses
+    
+    validates :email, uniqueness: true
+    validates :name, :email, presence: true
     has_one_attached :avatar
+   
+    def display_name
+        "#{name} - #{email}"
+    end
 end

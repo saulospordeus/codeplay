@@ -8,6 +8,7 @@
   <p><%= course.description %></p>
   <p><%= number_to_currency course.price %></p>
   <p><%= link_to 'Apagar', course_path(course), method: :delete %></p>
+  <p><%= course.instructor.name %></p>
 <% end %>
 
 <%= link_to 'Registrar um Curso', new_course_path %>
