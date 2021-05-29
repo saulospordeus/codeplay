@@ -10,8 +10,7 @@ describe 'Admin deletes courses' do
         lesson = Lesson.create!(name: 'Classes e objetos', duration: 10, 
                                 content: 'Uma aula de ruby', course: course)
        
-        visit course_path(course)
-        click_on lesson.name
+        visit course_lesson_path(course, lesson)
         
         expect { click_on 'Apagar'}.to change {Lesson.count}.by(-1)
         expect(current_path).to eq(course_path(course)) 
