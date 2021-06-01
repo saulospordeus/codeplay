@@ -30,9 +30,11 @@
 <%= link_to 'Voltar', courses_path %>
 <%= link_to 'Registrar uma aula', new_course_lesson_path(@course) %>
 
-<div id="lessons">
   <% @course.lessons.each do |lesson| %>
-    <%= link_to lesson.name, course_lesson_path(lesson) %>
+    <div>
+      <%= link_to_if current_user&.courses&.include?(@course), lesson.name, [@course, lesson] do %>
+        <%= lesson.name %>
+      <% end %>
     <p><%= lesson.duration %> minutos</p>
 <% end %>
 </div>

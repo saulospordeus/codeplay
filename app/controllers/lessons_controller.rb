@@ -1,5 +1,8 @@
 class LessonsController < ApplicationController
+    before_action :authenticate_user!, only: %i[show]
     before_action :set_course, only: %i[new create edit update destroy]
+    before_action :set_lesson, only: %i[show edit update destroy]
+    before_action :user_has_enrollment, only: %i[show]
 
     def new
         @lesson = Lesson.new
@@ -11,36 +14,27 @@ class LessonsController < ApplicationController
     end
 
     def show
-    @lesson = Lesson.find(params[:id])
     end
 
     def edit
-    @lesson = Lesson.find(params[:id])
     end
     
     def update
-        @lesson = Lesson.find(params[:id])
         @lesson.update(lesson_params)
         redirect_to course_lesson_path(@lesson), notice: 'Aula editada com sucesso'
     end
 
     def destroy
-        @lesson = Lesson.find(params[:id])
         @lesson.destroy
         redirect_to @course
     end
-   # def edit
-   #     @instructor = Instructor.find(params[:id])
-   #   end
-   #   
-   #   def update
-   #     @instructor = Instructor.find(params[:id])
-   #     @instructor.update(instructor_params)
-   #     redirect_to @instructor
-   #   end
   
 
     private
+
+    def user_has_enrollment
+        redirect_to @lesson.course unless current_user.courses.include?(@lesson.course)
+    end
 
     def lesson_params
         params.require(:lesson).permit(:name, :duration, :content)
