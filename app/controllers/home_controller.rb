@@ -1,8 +1,5 @@
 class HomeController < ApplicationController
     def index
-        @courses = Course.where(enrollment_deadline: Date.today..)
+      @courses = Course.available.min_to_max
     end
-
-
-
-end
+  end
