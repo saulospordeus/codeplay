@@ -6,7 +6,12 @@ Rails.application.routes.draw do
 
   resources :instructors
 
-  resources :courses do
+  namespace :admin do
+    resources :courses
+  end
+
+
+  resources :courses, only: [:show] do
     resources :lessons
     post 'enroll', on: :member
     get 'my_courses', on: :collection

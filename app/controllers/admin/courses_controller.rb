@@ -1,4 +1,4 @@
-class CoursesController < ApplicationController
+class Admin::CoursesController < ApplicationController
   before_action :set_course, only: %i[show edit update destroy enroll]
 
   def index
@@ -16,7 +16,7 @@ class CoursesController < ApplicationController
   def create
     @course = Course.new(course_params)
     if @course.save
-      redirect_to @course
+      redirect_to admin_course_path(@course)
     else
       @instructors = Instructor.all
       render :new
@@ -29,12 +29,12 @@ class CoursesController < ApplicationController
 
   def update
     @course.update(course_params)
-    redirect_to @course, notice: t('.success')
+    redirect_to admin_course_path(@course), notice: t('.success')
   end
 
   def destroy
     @course.destroy
-    redirect_to courses_path, notice: 'Curso apagado com sucesso'
+    redirect_to admin_courses_path, notice: 'Curso apagado com sucesso'
   end
 
   def enroll

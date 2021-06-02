@@ -8,7 +8,7 @@ describe 'admin updates courses' do
                                  code: 'RUBYBASIC', price: 10,
                                  enrollment_deadline: '22/12/2033', instructor: instructor)
     
-    visit course_path(course)
+    visit admin_course_path(course)
     click_on 'Editar'
     fill_in 'Nome', with: 'Ruby on Rails'
     fill_in 'Descrição', with: 'Curso de ruby on rails'
