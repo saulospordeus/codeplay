@@ -1,0 +1,12 @@
+
+<h1><%= @lesson.name %></h1>
+<dl>
+  <dt>Descrição</dt>
+  <dd><%= @lesson.content %></dd>
+  <dt>Duração</dt>
+  <dd><%= @lesson.duration %></dd>
+</dl>
+
+<%= link_to 'Voltar', admin_courses_path %>
+<%= link_to 'Editar', edit_admin_course_lesson_path(@lesson) %>
+<%= link_to 'Apagar', admin_course_lesson_path(@lesson), method: :delete %>

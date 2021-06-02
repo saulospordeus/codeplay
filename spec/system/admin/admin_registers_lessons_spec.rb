@@ -8,7 +8,7 @@ describe 'Admin view lessons' do
                                 code: 'RUBYBASIC', price: 10,
                                 enrollment_deadline: '22/12/2033', instructor: instructor)
 
-    visit course_path(course)
+    visit admin_course_path(course)
     click_on 'Registrar uma aula'
     fill_in 'Nome', with: "Duck Typing"
     fill_in 'Duração', with: 10
@@ -18,6 +18,6 @@ describe 'Admin view lessons' do
     expect(page).to have_text("Duck Typing")
     expect(page).to have_text("10 minutos")
     expect(page).to have_text('Aula cadastrada com sucesso')
-    expect(current_path).to eq(course_path(course))
+    expect(current_path).to eq(admin_course_path(course))
     end
 end

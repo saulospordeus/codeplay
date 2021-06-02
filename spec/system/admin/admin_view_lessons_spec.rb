@@ -17,7 +17,7 @@ describe 'Admin view lessons' do
       Enrollment.create!(user: user, course: course)
       login_as user, scope: :user
     
-      visit course_path(course)
+      visit admin_course_path(course)
 
        expect(page).to have_link("Classes e objetos")
        expect(page).to have_text('10 minutos')
@@ -39,7 +39,7 @@ describe 'Admin view lessons' do
       Enrollment.create!(user: user, course: course)
       login_as user, scope: :user
   
-      visit course_path(course)
+      visit admin_course_path(course)
   click_on "#{lesson.name}"
 
   expect(page).to have_content('Classes e objetos')

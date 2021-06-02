@@ -1,4 +1,5 @@
-class LessonsController < ApplicationController
+class Admin::LessonsController < ApplicationController
+    
     before_action :authenticate_user!, only: %i[show]
     before_action :set_course, only: %i[new create edit update destroy]
     before_action :set_lesson, only: %i[show edit update destroy]
@@ -10,7 +11,7 @@ class LessonsController < ApplicationController
 
     def create
         @lesson = @course.lessons.create!(lesson_params)
-        redirect_to @course, notice: 'Aula cadastrada com sucesso'
+        redirect_to [:admin, @course], notice: 'Aula cadastrada com sucesso'
     end
 
     def show
@@ -21,12 +22,12 @@ class LessonsController < ApplicationController
     
     def update
         @lesson.update(lesson_params)
-        redirect_to course_lesson_path(@lesson), notice: 'Aula editada com sucesso'
+        redirect_to admin_course_lesson_path(@lesson), notice: 'Aula editada com sucesso'
     end
 
     def destroy
         @lesson.destroy
-        redirect_to @course
+        redirect_to admin_course_path(@course)
     end
   
 

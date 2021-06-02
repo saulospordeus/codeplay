@@ -10,7 +10,7 @@ describe 'Admin updates lessons' do
         Enrollment.create!(user: user, course: course)      
     
     login_as user, scope: :user                      
-    visit course_path(course)
+    visit admin_course_path(course)
     click_on lesson.name
     click_on 'Editar'
     
